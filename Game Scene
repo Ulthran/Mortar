@@ -1,0 +1,95 @@
+//
+//  GameScene.swift
+//  Mortar
+//
+//  Created by Charlie Bushman on 6/7/16.
+//  Copyright (c) 2016 imaginary inc. All rights reserved.
+//
+//  Launches Game Scene right after load screen
+//  Displays the user's mortar and any other equipments along with buttons that lead to upgrade paths
+//  If there are incoming mortar shells detected they will be displayed in the sky above the mortar
+//  Shields can be taken control of manually if the user has any kind of interceptor system in place
+
+import SpriteKit
+
+class GameScene: SKScene {
+    //My label
+    let myLabel = SKLabelNode(fontNamed:"Chalkduster")
+    
+    /*
+     *Called when the Game Scene moves to view
+     *@Param view: The SKView object that is the game view
+     */
+    override func didMoveToView(view: SKView) {
+        setUpScene()
+    }
+    
+    /*
+     *Called when the Game Scene moves to view
+     *Sets up the Game Scene
+     */
+    func setUpScene(){
+        
+        myLabel.text = "Hello, World!"
+        myLabel.fontSize = 45
+        myLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame))
+        
+        self.addChild(myLabel)
+    }
+    
+    /*
+     *Called when a touch begins
+     *Triggers any touch events in the Game Scene
+     *@Param touches: A Set of all UITouch objects for this event
+     *@Param event: The UIEvent that triggers the method
+     */
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        for touch in touches {
+            let location = touch.locationInNode(self)
+            
+            let sprite = SKSpriteNode(imageNamed:"Spaceship")
+            
+            sprite.xScale = 0.5
+            sprite.yScale = 0.5
+            sprite.position = location
+            
+            let action = SKAction.rotateByAngle(CGFloat(M_PI), duration:1)
+            
+            sprite.runAction(SKAction.repeatActionForever(action))
+            
+            self.addChild(sprite)
+        }
+    }
+    
+    /*
+     *Called before each frame is rendered
+     *@Param currentTime: A CFTimeInterval object that holds the current time before frame rendering
+     */
+    override func update(currentTime: CFTimeInterval) {
+        
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
