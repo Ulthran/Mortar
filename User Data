@@ -8,6 +8,15 @@
 //  Holds all the user's game data
 //  Provides get/set methods for all the private data
 
+/************************************************************
+ *                                                          *
+ *             This file saves data locally.                *
+ *     It will probably be replaced with server storage     *
+ *              when the server is instituted               *
+ *                                                          *
+ *                                                          *
+ ***********************************************************/
+
 import Foundation
 
 class UserData {
