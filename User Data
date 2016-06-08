@@ -1,0 +1,108 @@
+//
+//  UserData.swift
+//  Mortar
+//
+//  Created by Charlie Bushman on 6/7/16.
+//  Copyright © 2016 imaginary inc. All rights reserved.
+//
+//  Holds all the user's game data
+//  Provides get/set methods for all the private data
+
+import Foundation
+
+class UserData {
+    //Establishes a place for all data storage
+    private let defaults = NSUserDefaults.standardUserDefaults()
+    
+    //Defines key names for all data
+    enum defaultKeys{
+        static let uninitializedKey = "uninitialized"
+        static let userNameKey = "userName"
+        static let damageKey = "damage"
+        static let reloadTimeKey = "reloadTime"
+        static let storageKey = "storage"
+        static let stealthKey = "stealth"
+        static let detectionTimeKey = "detectionTime"
+        static let detectionChanceKey = "detectionChance"
+        static let shieldStrengthKey = "shieldStrength"
+        static let interceptionChanceKey = "interceptionChance"
+    }
+    
+    /*
+     *Initializes all the data with starting values if this is the first time the app is opened
+     *Initializes all the data with saved values if the game has been opened
+     */
+    func initializeData(){
+        if(defaults.boolForKey(defaultKeys.uninitializedKey)){
+            defaults.setValue(false, forKey: defaultKeys.uninitializedKey)
+            defaults.setValue("User", forKey: defaultKeys.userNameKey)
+            defaults.setValue(10, forKey: defaultKeys.damageKey)
+            defaults.setValue(3600, forKey: defaultKeys.reloadTimeKey)
+            defaults.setValue(2500, forKey: defaultKeys.storageKey)
+            defaults.setValue(0, forKey: defaultKeys.stealthKey)
+            defaults.setValue(60, forKey: defaultKeys.detectionTimeKey)
+            defaults.setValue(25, forKey: defaultKeys.detectionChanceKey)
+            defaults.setValue(0, forKey: defaultKeys.shieldStrengthKey)
+            defaults.setValue(0, forKey: defaultKeys.interceptionChanceKey)
+        }else{
+            
+        }
+    }
+    
+    /*
+     *Get and Set methods for all data
+     */
+    func getUserName() ->String{
+        return defaults.stringForKey(defaultKeys.userNameKey)!
+    }
+    func setUserName(name: String){
+        defaults.setValue(name, forKey: defaultKeys.userNameKey)
+    }
+    
+    func getDamage() ->Int{
+        return defaults.integerForKey(defaultKeys.damageKey)
+    }
+    func setDamage(dmg: Int){
+        defaults.setValue(dmg, forKey: defaultKeys.damageKey)
+    }
+    
+    func getReloadTime() ->Int{
+        return defaults.integerForKey(defaultKeys.reloadTimeKey)
+    }
+    func setReloadTime(time: Int){
+        defaults.setValue(time, forKey: defaultKeys.reloadTimeKey)
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
